@@ -15,7 +15,6 @@ def create_app(settings_override=None):
     :param settings_override: Override settings
     :return: Flask app
     """
-
     app = Flask(__name__, instance_relative_config=True)
 
     app.config.from_object('config.settings')
@@ -23,6 +22,10 @@ def create_app(settings_override=None):
 
     if settings_override:
         app.config.update(settings_override)
+
+    @app.route
+    def index_page():
+        return 'Kumasi Hive Academy App API'
 
     app.register_blueprint(course)
     app.register_blueprint(user)
