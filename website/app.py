@@ -2,8 +2,10 @@ from flask import Flask
 
 from website.api.course.views import course
 from website.api.user.views import user
+from website.api.student.views import student
 
 from website.extensions import db
+from website.extensions import cors
 
 
 def create_app(settings_override=None):
@@ -22,12 +24,9 @@ def create_app(settings_override=None):
     if settings_override:
         app.config.update(settings_override)
 
-    @app.route('/')
-    def index_page():
-        return 'Kumasi Hive API'
-
     app.register_blueprint(course)
     app.register_blueprint(user)
+    app.register_blueprint(student)
 
     extensions(app)
 
@@ -37,5 +36,6 @@ def create_app(settings_override=None):
 def extensions(app):
 
     db.init_app(app)
+    cors.init_app(app)
 
     return None

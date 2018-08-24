@@ -30,7 +30,7 @@ class Course(db.Document):
 
     @classmethod
     def find_by_status(cls, is_completed=False):
-        return cls.objects.filter(is_completed=is_completed, is_live=True,)
+        return cls.objects.filter(is_completed=is_completed, is_live=True)
 
     @classmethod
     def find_by_id(cls, course_id):

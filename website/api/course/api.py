@@ -20,7 +20,6 @@ class CourseAPI(MethodView):
             abort(400)
 
     def get(self, course_id):
-
         if course_id:
             course = Course.find_by_id(course_id)
 
@@ -86,7 +85,6 @@ class CourseAPI(MethodView):
             return jsonify(response)
 
     def put(self, course_id):
-
         course = Course.objects.filter(
             external_id=course_id, is_live=True).first()
 
