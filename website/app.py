@@ -23,7 +23,7 @@ def create_app(settings_override=None):
     if settings_override:
         app.config.update(settings_override)
 
-    @app.route
+    @app.route('/')
     def index_page():
         return 'Kumasi Hive Academy App API'
 
